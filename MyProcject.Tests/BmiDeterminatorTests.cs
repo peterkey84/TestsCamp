@@ -27,13 +27,18 @@ namespace MyProcject.Tests
         }
 
         [Theory]
-        [InlineData(10.0)]
-        [InlineData(5.0)]
-        [InlineData(18.0)]
-        [InlineData(21.0)]
-        [InlineData(11.75)]
+        [InlineData(10.0, BmiClassification.Underweight)]
+        [InlineData(12.0, BmiClassification.Underweight)]
+        [InlineData(14.0, BmiClassification.Underweight)]
+        [InlineData(21.0, BmiClassification.Normal)]
+        [InlineData(24.8, BmiClassification.Normal)]
+        [InlineData(25.9, BmiClassification.Overweight)]
+        [InlineData(29.8, BmiClassification.Overweight)]
+        [InlineData(30.0, BmiClassification.Obesity)]
+        [InlineData(34.0, BmiClassification.Obesity)]
+        [InlineData(43.0, BmiClassification.ExtremeObesity)]
 
-        public void DetermineBmi_ForBmiBelow18_5_ReturnsUderweightClassification_Theory(double bmi)
+        public void DetermineBmi_ForGivenBmi_ReturnsCorrectlyClassification(double bmi, BmiClassification classification)
         {
             //arrange
             BmiDeterminator bmiDeterminator = new BmiDeterminator();
@@ -42,7 +47,7 @@ namespace MyProcject.Tests
             BmiClassification result = bmiDeterminator.DetermineBmi(bmi);
 
             //assert
-            Assert.Equal(BmiClassification.Underweight, result);
+            Assert.Equal(classification, result);
         }
     }
 }
