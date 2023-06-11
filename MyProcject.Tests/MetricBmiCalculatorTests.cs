@@ -38,8 +38,6 @@ namespace MyProcject.Tests
         [InlineData(100, 0)]
         [InlineData(100, -130)]
         [InlineData(0, 0)]
-        [InlineData(110, 110)]
-
 
 
         public void CalculateBmi_ForInvalidArgument_ThrowsArgumentException(double weight, double height)

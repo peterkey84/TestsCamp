@@ -9,9 +9,9 @@ namespace MyProject
 {
     public class BmiCalculatorFacade
     {
-        private readonly UnitSystem _unitSystem;
+        private readonly UnitSystem _unitSystem;    
         private readonly IBmiCalculator _bmiCalculator;
-        private readonly IBmiDeterminator _bmiDeterminator;
+        private readonly BmiDeterminator _bmiDeterminator = new();
 
         private IBmiCalculator GetBmiCalculator(UnitSystem unitSystem)
             =>
@@ -33,10 +33,10 @@ namespace MyProject
                 _ => throw new NotImplementedException(),
             };
 
-        public BmiCalculatorFacade(UnitSystem unitSystem, IBmiDeterminator bmiDeterminator)
+        public BmiCalculatorFacade(UnitSystem unitSystem)
         {
             _unitSystem = unitSystem;
-            _bmiDeterminator = bmiDeterminator;
+            //_bmiDeterminator = bmiDeterminator;
             _bmiCalculator = GetBmiCalculator(unitSystem);
         }
 
