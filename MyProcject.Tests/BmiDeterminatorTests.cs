@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace MyProcject.Tests
 {
-    public class BmiDeterminatorTests
+    public class BmiDeterminatorTests // nazwa klasy musi skladać sie z nazwy klasy testowanej i słowa kluczowego tests np: jakasKlasa + Tests
     {
 
 
-        [Fact]
+        [Fact] // metoda która jest z atrybutem FAKT nie może przyjmować parametrów. W tym przypadku sprawdzamy jeden konkretny scenariusz testowy
 
-        public void DetermineBmi_ForBmiBelow18_5_ReturnsUderweightClassification()
+        public void DetermineBmi_ForBmiBelow18_5_ReturnsUderweightClassification() // nazwa metody musi skladać się z 3 cześci:
+                                                                                   // 1. nazwa metdody którą chcemy przetestować    
+                                                                                   // 2. scenariusz pod którym testujemy daną metode
+                                                                                   // 3. oczekiwany rezultat
         {
-            //arrange
+            //arrange   
             BmiDeterminator bmiDeterminator = new BmiDeterminator();
             double bmi = 10;
 
@@ -26,7 +29,8 @@ namespace MyProcject.Tests
             Assert.Equal(BmiClassification.Underweight, result);
         }
 
-        [Theory]
+        [Theory] // metoda z atrybutem TOERIA może przyjmować parametry. Parametry danej teori. W tym wypadku możemy sprawdzać różne scenariusze testowe.
+
         [InlineData(10.0, BmiClassification.Underweight)]
         [InlineData(12.0, BmiClassification.Underweight)]
         [InlineData(14.0, BmiClassification.Underweight)]
